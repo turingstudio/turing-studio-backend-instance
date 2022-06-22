@@ -93,7 +93,7 @@ const config = {
           throw error
         }
       })
-      exec(`mysql app_studio_instance < ./tmp/dump.sql`, (err, stdout, stderr) => {
+      exec(`mysql turing_studio_instance < ./tmp/dump.sql`, (err, stdout, stderr) => {
         if (err) { console.error(`exec error: ${err}`); return; }
       });
     },
