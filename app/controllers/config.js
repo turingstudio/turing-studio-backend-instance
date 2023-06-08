@@ -86,14 +86,16 @@ const config = {
   ['/public/publish']: {
     PUT: async (req, res) => {
       const body = req.body.data;
-      // console.log('READING PUT', body)
+      console.log('READING PUT')
       await fs.writeFile("./tmp/dump.sql", body, function(error, body)
       {
         if (error) {
+          console.log('ERROR writing file', error)
           throw error
         }
       })
       exec(`mysql turing_studio_instance < ./tmp/dump.sql`, (err, stdout, stderr) => {
+        console.log('stdout', stdout)
         if (err) { console.error(`exec error: ${err}`); return; }
       });
     },
